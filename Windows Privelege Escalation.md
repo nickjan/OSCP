@@ -241,13 +241,13 @@ The goal is to find services with unquoted paths that may be vulnerable.
    ```bash
    wmic service get name,pathname
 
-# Unquoted Service Paths: Identification, Exploitation, and Mitigation
+## Unquoted Service Paths: Identification, Exploitation, and Mitigation
 
-## **What to Look For**:
+### **What to Look For**:
 - Inspect the service paths listed.
 - Check for paths with spaces that are **not enclosed in quotes**.
 
-## **Examples**:
+### **Examples**:
 - **Vulnerable Example**:  
   `C:\Program Files\Some Directory\service.exe` *(unquoted)*  
 - **Secure Example**:  
@@ -255,14 +255,14 @@ The goal is to find services with unquoted paths that may be vulnerable.
 
 --
 
-## **Why This Matters**:
+### **Why This Matters**:
 If the service executable path is unquoted and contains spaces, Windows may mistakenly execute a malicious executable located in one of the earlier directories during path resolution.
 
 
 
-## **Exploitation**:
+### **Exploitation**:
 
-## **Steps to Exploit a Vulnerable Unquoted Service Path**:
+### **Steps to Exploit a Vulnerable Unquoted Service Path**:
 
 1. **Find the Vulnerable Directory**:  
    - For the path `C:\Program Files\Some Directory\service.exe`, the system might search in the following order:
