@@ -291,7 +291,7 @@ The first step in privilege escalation is gathering information about the target
       - Exploitation involves placing a malicious executable in a directory that Windows searches before the legitimate path.
       - **Mitigation**: Ensure all service paths are properly quoted to prevent this vulnerability.
       
-      ---
+---
 
 ### DLL Hijacking
 
