@@ -232,7 +232,7 @@ The first step in privilege escalation is gathering information about the target
   1. Identify unquoted service paths using `wmic service get name,pathname`.
   2. Place a malicious executable in the vulnerable directory.
   3. Restart the service to execute the payload.
----
+
 
 ## **Identification**:
 The goal is to find services with unquoted paths that may be vulnerable.
@@ -240,29 +240,29 @@ The goal is to find services with unquoted paths that may be vulnerable.
 1. **Command**:
    ```bash
    wmic service get name,pathname
----
+
 # Unquoted Service Paths: Identification, Exploitation, and Mitigation
 
 ## **What to Look For**:
 - Inspect the service paths listed.
 - Check for paths with spaces that are **not enclosed in quotes**.
 
-### **Examples**:
+## **Examples**:
 - **Vulnerable Example**:  
   `C:\Program Files\Some Directory\service.exe` *(unquoted)*  
 - **Secure Example**:  
   `"C:\Program Files\Some Directory\service.exe"` *(quoted)*  
 
----
+--
 
-### **Why This Matters**:
+## **Why This Matters**:
 If the service executable path is unquoted and contains spaces, Windows may mistakenly execute a malicious executable located in one of the earlier directories during path resolution.
 
----
 
-### **Exploitation**:
 
-### **Steps to Exploit a Vulnerable Unquoted Service Path**:
+## **Exploitation**:
+
+## **Steps to Exploit a Vulnerable Unquoted Service Path**:
 
 1. **Find the Vulnerable Directory**:  
    - For the path `C:\Program Files\Some Directory\service.exe`, the system might search in the following order:
@@ -284,7 +284,7 @@ If the service executable path is unquoted and contains spaces, Windows may mist
        ```
      - This will trigger the service to execute the malicious file instead of the legitimate one.
 
----
+
 
 ### **Mitigation**:
 
@@ -298,14 +298,14 @@ To secure systems and prevent exploitation:
      sc config <service_name> binPath= "\"C:\Program Files\Some Directory\service.exe\""
      ```
 
----
+
 
 ## **Summary**:
 - **Unquoted Service Paths** pose a significant risk if they contain spaces and are not properly enclosed in quotes.
 - Exploitation involves placing a malicious executable in a directory that Windows searches before the legitimate path.
 - **Mitigation**: Ensure all service paths are properly quoted to prevent this vulnerability.
 
-
+---
 
 ### DLL Hijacking
 
